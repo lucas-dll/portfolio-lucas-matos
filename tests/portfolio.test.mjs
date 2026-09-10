@@ -17,3 +17,11 @@ for (const text of [
 assert.match(html, /<main[\s>]/);
 assert.match(html, /<section[^>]+id="projetos"/);
 assert.match(html, /<section[^>]+id="certificados"/);
+
+const css = readFileSync(new URL('../style.css', import.meta.url), 'utf8');
+
+for (const selector of ['--accent', '.project-card', '@media (max-width: 700px)']) {
+  assert.ok(css.includes(selector), `estilo ausente: ${selector}`);
+}
+
+assert.match(html, /<link rel="stylesheet" href="style.css">/);
