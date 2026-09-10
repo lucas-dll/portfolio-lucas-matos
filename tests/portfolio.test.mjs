@@ -25,3 +25,7 @@ for (const selector of ['--accent', '.project-card', '@media (max-width: 700px)'
 }
 
 assert.match(html, /<link rel="stylesheet" href="style.css">/);
+
+const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8');
+assert.ok(readme.includes('GitHub Pages'));
+assert.ok(readme.includes('Settings'));
